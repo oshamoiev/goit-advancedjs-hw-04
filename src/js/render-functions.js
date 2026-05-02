@@ -4,6 +4,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
   galleryContainer: document.querySelector('.gallery'),
+  loadMoreBtn: document.querySelector('.js-load-more-btn'),
   loader: document.querySelector('.loader'),
 };
 
@@ -41,9 +42,15 @@ const createGalleryItem = image => {
 };
 
 export const createGallery = images => {
-  refs.galleryContainer.innerHTML = images
-    .map(image => createGalleryItem(image))
-    .join('');
+  refs.galleryContainer.innerHTML = images.map(createGalleryItem).join('');
+  gallery.refresh();
+};
+
+export const appendGallery = images => {
+  refs.galleryContainer.insertAdjacentHTML(
+    'beforeend',
+    images.map(createGalleryItem).join('')
+  );
   gallery.refresh();
 };
 
@@ -51,10 +58,8 @@ export const clearGallery = () => {
   refs.galleryContainer.innerHTML = '';
 };
 
-export const showLoader = () => {
-  refs.loader.classList.add('is-active');
-};
+export const showLoader = () => refs.loader.classList.remove('is-hidden');
+export const hideLoader = () => refs.loader.classList.add('is-hidden');
 
-export const hideLoader = () => {
-  refs.loader.classList.remove('is-active');
-};
+export const showLoadMoreBtn = () => refs.loadMoreBtn.classList.remove('is-hidden');
+export const hideLoadMoreBtn = () => refs.loadMoreBtn.classList.add('is-hidden');
