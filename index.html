@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homework 4</title>
     <script type="module" crossorigin src="/vanilla-app-template/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/index-D8Btx21I.css">
+    <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/vendor-73qhTu8_.js">
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/vendor-DumFYO8Z.css">
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/index-CNRmckTW.css">
   </head>
   <body>
-    <main></main>
+    <main>
+      <form class="form">
+        <label>
+          <input type="text" name="search-text" placeholder="Search images..." required>
+        </label>
+        <button class="button" type="submit">Search</button>
+      </form>
+      <ul class="gallery"></ul>
+      <button type="button" class="button load-more-button is-hidden js-load-more-btn">Load more</button>
+      <span class="loader is-hidden">Loading images, please wait...</span>
+    </main>
   </body>
 </html>
