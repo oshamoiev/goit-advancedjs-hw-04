@@ -1,6 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+const CARDS_TO_SCROLL = 2;
 
 const refs = {
   galleryContainer: document.querySelector('.gallery'),
@@ -63,3 +64,10 @@ export const hideLoader = () => refs.loader.classList.add('is-hidden');
 
 export const showLoadMoreBtn = () => refs.loadMoreBtn.classList.remove('is-hidden');
 export const hideLoadMoreBtn = () => refs.loadMoreBtn.classList.add('is-hidden');
+
+export const scrollCards = () => {
+  const firstCard = refs.galleryContainer.querySelector('.gallery-item');
+  if (!firstCard) return;
+  const { height } = firstCard.getBoundingClientRect();
+  window.scrollBy({ top: height * CARDS_TO_SCROLL, behavior: 'smooth' });
+};

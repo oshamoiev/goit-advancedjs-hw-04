@@ -10,6 +10,7 @@ import {
   showLoader,
   hideLoadMoreBtn,
   showLoadMoreBtn,
+  scrollCards,
 } from './js/render-functions.js';
 
 const refs = {
@@ -91,6 +92,7 @@ const onLoadMoreClick = async () => {
   try {
     const data = await getImagesByQuery(queryString, page);
     appendGallery(data.hits);
+    scrollCards();
 
     if (hasMorePages()) {
       showLoadMoreBtn();
